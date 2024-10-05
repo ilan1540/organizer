@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {useContext} from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { Navbar } from "./components/layout/Navbar";
+import { MyRoutes } from './components/config/MyRoutes'
+import { AuthContextProvider } from './components/config/AuthContext'
+import { DataContext } from './components/config/DataContext'
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <DataContext>
+    <div className='w-full h-full absolute bg-gradient-to-r from-blue-400 to-emerald-400 '>
+        <BrowserRouter > 
+            <Navbar />
+            <MyRoutes /> 
+      </BrowserRouter>
+        </div>
+        </DataContext>
+      </AuthContextProvider>
   );
 }
 
