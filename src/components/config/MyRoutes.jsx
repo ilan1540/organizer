@@ -11,6 +11,7 @@ import { IncomeFrom } from "../kelet/incomePage/IncomeFrom";
 import { FullDate } from "../sheard/FullDate";
 import { SogIncome } from "../options/SogIncome";
 import { UplodFile } from "../kelet/incomePage/UplodFile";
+import { ShowIncomes } from "../incomes/ShowIncomes";
 
 
 
@@ -27,6 +28,8 @@ export const MyRoutes = () => {
       <Route path="/income/salary" element={<IncomeFrom />} />
       <Route path="/sogincome" element={<SogIncome />} />
       <Route path="/upload" element={<UplodFile />} />
+      <Route path="/showincomes" element={<ShowIncomes />} />
+
     </Routes>
   
     

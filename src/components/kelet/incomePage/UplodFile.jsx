@@ -12,7 +12,7 @@ export const UplodFile = () => {
   const [fileName, setFileName] = useState()
 const [mass, setMass] = useState('>לא נבחר קובץ או סוג קלט')
 
-  const { csvFile } = useContext(AppContext)
+  const { csvFile,setHandelAdd,hendelAdd } = useContext(AppContext)
 
   useEffect(() => {
     if (csvFile && select) {
@@ -69,7 +69,7 @@ const [mass, setMass] = useState('>לא נבחר קובץ או סוג קלט')
     name: 'פנסיה'
     },
     {
-    value: 'nationalInsur',
+    value: 'bl-income',
     name: 'ביטוח לאומי'
     },
     {
@@ -80,8 +80,8 @@ const [mass, setMass] = useState('>לא נבחר קובץ או סוג קלט')
   ]
 
   const handelSaveData = () => {
-    data && data.data.map((rec) => addNewDoc(select, rec))
-    setMass('קובץ נקלט בהצלחה')
+    data && data.data.map((rec) => addNewDoc(select, rec,setHandelAdd))
+    setMass(hendelAdd)
     setData(null)
     setSelect(null)
     setLength(0)

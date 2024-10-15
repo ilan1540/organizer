@@ -12,6 +12,8 @@ import {getFirestore, collection, onSnapshot,
 import { db } from './firebase'
 import moment from 'moment'
 
+
+
 // get timeStape from firebase
 export const getStamp = () => {
   try  {
@@ -22,18 +24,25 @@ export const getStamp = () => {
 }
 
 // add rec
-export const addNewDoc = async (colName, rec) => {
+export const addNewDoc = async (colName, rec, setHandelAdd) => {
   const collctionRef = collection(db, colName)
  // const createAt =  {'createAt':moment().format()}
  // const toSave = {...rec,createAt}
- // console.log(toSave )
+  console.log(colName,rec )
   
+  await addDoc(collctionRef, rec).then((docRef) => {
+    console.log('doc wrutgth with id', docRef.id)
+    setHandelAdd('נקלט בהצלחה')
+   }).catch(((error) => {setHandelAdd(error)
+    console.error('err on doc:',error)
+  }))
+  /*
   try {
     await addDoc(collctionRef,rec)
   } catch (err) {
     console.log(err)
   }
-  
+  */
 }
 
 
@@ -57,15 +66,15 @@ export const delRec = async (colName,docId) => {
 
 // get all dataCollaction
 
-export const getAll = async (colName,setDate) => {
+export const getAll = async (colName,set) => {
   const colRef = collection(db, colName)
-  const q = query(colRef,orderBy('billingDate'))
+  const q = query(colRef,orderBy('date'))
  await getDocs(q).then((snapsshot) => {
     let data =[]
     snapsshot.docs.forEach((doc) => {
       data.push({...doc.data(), id:doc.id})
     })
-   setDate(data)
+   set(data)
    console.log(data,colName)
   // return(data)
   })
@@ -120,7 +129,13 @@ export const readOptions = async (setOptions) => {
   // doc.data() is never undefined for query doc snapshots
   setOptions(doc && doc.data())
  //console.log(doc.id, " => ", doc.data());
-});
-  
-  
+})  
+}
+
+export const readData = async (collName, data,set) => {
+  const allData = await getDocs(collection(db, collName));
+  allData.forEach((doc) => {
+    data.push({...doc.data(), id:doc.id})
+ })
+    set(data)
 }

@@ -46,7 +46,7 @@ export const Navbar = () => {
   
   let Links =[
       {name:"HOME",to:"/home"},
-      {name:"SERVICE",to:"/service"},
+      {name:"INCOMES",to:"/showincomes"},
       {name:"sog Income",to:"/sogincome"},
       {name:"Upload",to:"/upload"},
       {name:"קלט נתונים",to:"/incomes"},

@@ -6,7 +6,7 @@ export const BackButton = () => {
  
   
     return (
-      <button className="rounded-full py-1 px-4 text-md font-semibold  text-white bg-blue-600 cursor-pointer hover:bg-blue-800 hover:font-bold"
+      <button className="rounded-full py-1 px-5 text-lg font-semibold  text-white bg-gray-600 cursor-pointer hover:bg-indigo-400 hover:text-white"
         onClick={() => navigate(-1)}>
         חזור
         </button>

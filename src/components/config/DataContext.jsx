@@ -17,6 +17,8 @@ export const DataContext = ({ children }) => {
   const [cardState, setCardState] = useState({})
   const [search, setSearch] = useState('')
   const [options, setOptions] = useState([])
+  const [hendelAdd, setHandelAdd] = useState(null)
+  const [rent,setRent] =useState()
   
   
 
@@ -42,7 +44,11 @@ export const DataContext = ({ children }) => {
      cardState,
      setCardState,
      options,
-     setOptions ,
+     setOptions,
+     hendelAdd,
+     setHandelAdd,
+     rent,
+     setRent,
   }
   return (
     <AppContext.Provider value={value}>
