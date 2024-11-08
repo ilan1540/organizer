@@ -1,16 +1,19 @@
-import {getFirestore, collection, onSnapshot,
-  addDoc, doc,
+import {
+  collection,
+  //onSnapshot,
+  addDoc,
+  //doc,
   getDocs,
-  setDoc,
-   getDoc,
-  deleteDoc,
+ // setDoc,
+ // getDoc,
+ // deleteDoc,
   query,
   where,
-  orderBy,
+ // orderBy,
   serverTimestamp,
 } from 'firebase/firestore'
 import { db } from './firebase'
-import moment from 'moment'
+//import moment from 'moment'
 
 
 
@@ -42,7 +45,6 @@ export const addNewDoc = async (colName, rec, setHandelAdd) => {
   } catch (err) {
     console.log(err)
   }
-  */
 }
 
 
@@ -132,10 +134,36 @@ export const readOptions = async (setOptions) => {
 })  
 }
 
-export const readData = async (collName, data,set) => {
+export const readData = async (collName, set) => {
+  const data = []
   const allData = await getDocs(collection(db, collName));
   allData.forEach((doc) => {
     data.push({...doc.data(), id:doc.id})
  })
     set(data)
 }
+
+export const queryByYear = async (collName,year, set) => {
+  let data = []
+  if (year) {
+  const y = year.toString()
+  const colRef = collection(db, collName)
+  const q =  query(colRef, where('year','==', y))
+  const res = await getDocs(q)
+  res.forEach((doc)=>{data.push({...doc.data(),id:doc.id}) })
+    set(data)
+  }
+ 
+}
+
+// get data use in sog incme
+export const getData = async (colName, setData) => {
+  // console.log('colname=',colName)
+  const allData = await getDocs(collection(db, colName));
+  // console.log('allData=',allData)
+  allData.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    setData(doc && doc.data())
+    //console.log(doc.id, " => ", doc.data());
+  })
+};

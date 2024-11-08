@@ -18,37 +18,30 @@ export const DataContext = ({ children }) => {
   const [search, setSearch] = useState('')
   const [options, setOptions] = useState([])
   const [hendelAdd, setHandelAdd] = useState(null)
+  const [salary, setSalary] = useState()
+  const [pension, setPension] = useState()
+  const [bl, setBl] = useState()
   const [rent,setRent] =useState()
   
   
 
    const value = {
-    isAuth,
-    setIsAuth,
-    user,
-    setUser,
-    result,
-     setResult,
-     csvFile,
-     setCsvFile,
-     firebaseMasg,
-     setFirebaseMass,
-     year,
-     setYear,
-     month,
-     setMonth,
-     sogIncome,
-     setSogIncome,
-     search,
-     setSearch,
-     cardState,
-     setCardState,
-     options,
-     setOptions,
-     hendelAdd,
-     setHandelAdd,
-     rent,
-     setRent,
+    isAuth, setIsAuth,
+    user, setUser,
+    result, setResult,
+     csvFile, setCsvFile,
+     firebaseMasg, setFirebaseMass,
+     year, setYear,
+     month, setMonth,
+     sogIncome, setSogIncome,
+     search, setSearch,
+     cardState, setCardState,
+     options, setOptions,
+     hendelAdd, setHandelAdd,
+     rent, setRent,
+     salary, setSalary,
+     pension, setPension,
+     bl, setBl,
   }
   return (
     <AppContext.Provider value={value}>

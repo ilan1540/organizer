@@ -4,10 +4,11 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
-import { getMonth, getYear } from 'date-fns';
-import range from "lodash/range";
+//import { getMonth, getYear } from 'date-fns';
+//import range from "lodash/range";
 
 // רישמת חודשים לא בשימוש
+/*
  const month = [
   {no: 'jan',
   teor: 'ינואר'},
@@ -34,7 +35,7 @@ import range from "lodash/range";
   {no: 'dec',
   teor: 'דצמבר'},
 ]
-     
+ */    
 
 export const MonthSelect = ({set}) => {
   const [monthYearSelect,setMonthYearSelect] = useState(new Date())

@@ -17,6 +17,7 @@ import { ShowIncomes } from "../incomes/ShowIncomes";
 
 
 
+
 export const MyRoutes = () => {
   return (
   
@@ -29,6 +30,7 @@ export const MyRoutes = () => {
       <Route path="/sogincome" element={<SogIncome />} />
       <Route path="/upload" element={<UplodFile />} />
       <Route path="/showincomes" element={<ShowIncomes />} />
+     
 
     </Routes>
   

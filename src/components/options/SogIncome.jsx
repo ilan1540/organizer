@@ -1,7 +1,7 @@
 import {useState,useEffect,useContext} from 'react'
 import { PageHeader } from '../sheard/PageHeader'
 import { FaPlus, FaTrash } from 'react-icons/fa';
-import { getData, setRec } from '../config/firebaseFunc';
+import { getData } from '../config/firebaseFunc';
 import { useNavigate } from 'react-router-dom';
 import {AppContext} from '../config/DataContext'
 
@@ -18,8 +18,8 @@ export const SogIncome = () => {
   // read from firebase
   useEffect(() => {
     const colName = 'options'
-  //  const docName = 'incomeName'
-    getData(colName, setOptions)
+    const docName = 'incomeName'
+   getData(colName, setOptions)
   //  console.log(options)
   }, [])
 
@@ -48,7 +48,7 @@ export const SogIncome = () => {
     const toSave = {
       incomeName
     }
-    setRec(colName,docId,  toSave)
+  //  setRec(colName,docId,  toSave)
     navigate('/')
   }
 
