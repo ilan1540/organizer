@@ -21,7 +21,9 @@ export const DataContext = ({ children }) => {
   const [salary, setSalary] = useState()
   const [pension, setPension] = useState()
   const [bl, setBl] = useState()
-  const [rent,setRent] =useState()
+  const [rent, setRent] = useState()
+  const [creaditeCard, setCreadieCard] = useState()
+  const [gemelData , setGemelData] = useState([])
   
   
 
@@ -42,6 +44,8 @@ export const DataContext = ({ children }) => {
      salary, setSalary,
      pension, setPension,
      bl, setBl,
+     creaditeCard, setCreadieCard,
+     gemelData , setGemelData,
   }
   return (
     <AppContext.Provider value={value}>

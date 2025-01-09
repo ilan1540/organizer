@@ -69,9 +69,6 @@ export const SogIncome = () => {
           />
         </div>
         <div className='flex justify-center items-center gap-2 p-3'>
-          <ul>
-            
-          </ul>
           <table className='table-auto'>
             <thead>
               <tr>

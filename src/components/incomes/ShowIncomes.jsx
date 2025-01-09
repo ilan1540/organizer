@@ -7,9 +7,6 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { sumValue,numberWithCommas } from '../config/func'
 import { Table } from '../reactTable/Table'
 
-//import {pensionHeader,rentHeader} from '../sheard/tableHeaders'
-//import { ReactTable } from '../sheard/ReactTable'
-//import {columns} from '../reactTable/rentColumns'
 
 export const ShowIncomes = () => {
   const [data, setData] = useState([])
@@ -28,6 +25,7 @@ const [sog, setSog] = useState('')
     const d = new Date()
    setYear(d.getFullYear()) 
   }, [setYear])
+  
 // hendel data By year
   useEffect(() => {
     const rent = 'rent'
@@ -117,26 +115,6 @@ const [sog, setSog] = useState('')
   ]
 
 
-/*
-  const ShowTableBtn = () => {
-    return (
-      <button onClick={showRentTable}  className="rounded-full mt-1 justify-center  py-1 px-5 text-lg font-semibold  text-white bg-gray-600 cursor-pointer hover:bg-indigo-400 hover:text-white">הצג טבלה</button>
-    )
-  }
-    
-  const heandelSogData = (sog) => {
-    return (
-      <button onClick={()=> setSog(sog)}  className="rounded-full mt-1 justify-center  py-1 px-5 text-lg font-semibold  text-white bg-gray-600 cursor-pointer hover:bg-indigo-400 hover:text-white">הצג טבלה</button>
-    )
-  }
-  
-
-  const showRentTable = () => {
-    setData(rent)
-    setHeader(rentHeader)
-    
-  }
-*/
   return (
     <>
     <div className='flex justify-around mt-4'>
@@ -178,10 +156,10 @@ const [sog, setSog] = useState('')
             />
             <button onClick={()=> setSog('rent')}  className="rounded-full mt-1 justify-center  py-1 px-5 text-lg font-semibold  text-white bg-gray-600 cursor-pointer hover:bg-indigo-400 hover:text-white">הצג טבלה</button>
           </div>
-          
+          <Table data={data} header={header} />
         </div>
       </div>
-      <Table data={data} header={header} />
+      
     </>
     
   )

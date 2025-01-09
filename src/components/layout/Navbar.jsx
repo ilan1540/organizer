@@ -29,7 +29,7 @@ export const Navbar = () => {
       console.log(error)
     }
   }
-
+/*
   const navigation = {
     ctegory: [
       { name: 'קלט אשראי', to: '/keletcreadite'},
@@ -43,13 +43,15 @@ export const Navbar = () => {
     { name: 'שכר', href: '#' },
   ],
   }
-  
+  */
   let Links =[
-      {name:"HOME",to:"/home"},
+    { name: "HOME", to: "/home" },
+    {name:"קופות גמל",to:"/gemel"},
       {name:"INCOMES",to:"/showincomes"},
       {name:"sog Income",to:"/sogincome"},
       {name:"Upload",to:"/upload"},
-      {name:"קלט נתונים",to:"/incomes"},
+      { name: "קלט נתונים", to: "/incomes" },
+      {name:"כרטיסי אשראי",to:"/showcreditcard"},
     ]; 
   const Button = (props) => {
   return (

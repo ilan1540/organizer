@@ -1,4 +1,6 @@
-import {useState,useEffect} from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { AppContext } from '../config/DataContext'
+import { readDocById,getData } from '../config/firebaseFunc';
 import {
   createColumnHelper,
   flexRender,
@@ -23,69 +25,68 @@ import {
 } from "lucide-react";
 
 const columnHelper = createColumnHelper();
-/*
-const columns = [
-  columnHelper.accessor("month", {
-    cell: (info) => info.getValue(),
-    header: () => (
-      <span className="flex items-center">
-        <div className="mr-2" size={16}  >חודש</div>
-      </span>
-    ),
-  }),
-  columnHelper.accessor("date", {
-    cell: (info) => info.getValue(),
-    header: () => (
-      <span className="flex items-center">
-        <div className="mr-2" size={16}  >תאריך</div>
-      </span>
-    ),
-  }),
-  columnHelper.accessor("pratim", {
-    cell: (info) => info.getValue(),
-    header: () => (
-      <span className="flex items-center">
-        <div className="mr-2" size={16}  >פרטים</div>
-      </span>
-    ),
-  }),
-  columnHelper.accessor("neto", {
-    cell: (info) => info.getValue(),
-    header: () => (
-      <span className="flex items-center">
-        <div className="mr-2" size={16}  >סכום</div>
-      </span>
-    ),
-  }),
-]
-*/
-export const Table = ({data, header}) => {
+
+
+export const Table = () => {
+ // const [result, setResult] = useState([])
+  const [fields, setFields] = useState([])
+ // const [records, setRecrds] = useState([])
+  const [data, setData] = useState([])
+  const [header, setHeader] = useState([])
   const [sorting, setSorting] = useState([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [columns, setColumns] = useState([]);
+  
 
-  console.log(header,data)
+  const { options, setOptions,gemelData } = useContext(AppContext)
+  
+ // console.log(gemelData.data)
+
+  useEffect(() => {
+    let fields = []
+    let records = []
+    if (gemelData.data) {
+      fields = gemelData.data.result.fields
+      records= gemelData.data.result.records
+     // console.log(fields, records)
+      setData(records)
+      setFields(fields)
+    }
+    console.log('fields', fields)
+    console.log('data',data)
+  }, [gemelData])
+  
+ 
+  
+  
+
 
   const heandelColumns = () => {
+   console.log(fields)
     let arr = []
-    header.map((i) => arr.push(
-      columnHelper.accessor(i.field, {
+   
+    fields.map((i) => arr.push(
+      columnHelper.accessor(i.id, {
     cell: (info) => info.getValue(),
     header: () => (
       <span className="flex items-center">
-        <div className="mr-2">{i.name}</div>
+        {i && i.info ? (
+        <div className="mr-2">{i.info.label}</div>
+        ):(null)}
+        
       </span>
     ),
       }),
       
     ))
+    
    setColumns(arr) 
   }
 
   useEffect(() => {
     heandelColumns()
   }
-  ,[header])
+  ,[fields])
   
   
   const table = useReactTable({

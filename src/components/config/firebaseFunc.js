@@ -2,9 +2,9 @@ import {
   collection,
   //onSnapshot,
   addDoc,
-  //doc,
+  doc,
   getDocs,
- // setDoc,
+  setDoc,
  // getDoc,
  // deleteDoc,
   query,
@@ -23,6 +23,54 @@ export const getStamp = () => {
   const  stamp = serverTimestamp()
     return stamp
   } catch (err) {
+  }
+}
+
+// get doc from collection
+
+export const readData = async (collName, set) => {
+  const data = []
+  const allData = await getDocs(collection(db, collName));
+  allData.forEach((doc) => {
+    data.push({...doc.data(), id:doc.id})
+ })
+    set(data)
+}
+
+//read obe doc from collection with key id
+
+export const readDocById = async (colName, id,set) =>
+{
+ // console.log(db)
+  const ref = collection(db, colName)
+  await getDocs(ref).then((snapshot) => {
+    let data = []
+    snapshot.docs.forEach((doc) => {
+      if (doc.id == 'gemelHeders') {
+        data= doc.data()
+      // console.log(doc.data(),doc.id) 
+      }
+  //    console.log(data && data.header)
+      set(data.header)
+    })
+   })
+//  const q = query(colRef,orderBy('date'))
+// await getDocs(ref).then((snapsshot) => {
+ //   let data =[]
+ //   snapsshot.docs.forEach((doc) => {
+   //   data.push({...doc.data(), id:doc.id})
+  //  })
+}
+
+// setRec
+export const upDate = async (colName, id, rec) =>{
+ try  {
+    await setDoc(doc(db, colName, id), rec)
+   // console.log('add123')
+    console.log('רשומה נשמרה בהצלחה')
+  } catch (err) {
+    console.log('err- add123', err)
+   // setFirebaseMass({err})
   }
 }
 
@@ -46,6 +94,7 @@ export const addNewDoc = async (colName, rec, setHandelAdd) => {
     console.log(err)
   }
 }
+
 
 
 // update  set rec
@@ -134,14 +183,7 @@ export const readOptions = async (setOptions) => {
 })  
 }
 
-export const readData = async (collName, set) => {
-  const data = []
-  const allData = await getDocs(collection(db, collName));
-  allData.forEach((doc) => {
-    data.push({...doc.data(), id:doc.id})
- })
-    set(data)
-}
+
 
 export const queryByYear = async (collName,year, set) => {
   let data = []
@@ -152,18 +194,19 @@ export const queryByYear = async (collName,year, set) => {
   const res = await getDocs(q)
   res.forEach((doc)=>{data.push({...doc.data(),id:doc.id}) })
     set(data)
+
   }
  
 }
 
 // get data use in sog incme
 export const getData = async (colName, setData) => {
-  // console.log('colname=',colName)
+   console.log('colname=',colName)
   const allData = await getDocs(collection(db, colName));
-  // console.log('allData=',allData)
+   console.log('allData=',allData)
   allData.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     setData(doc && doc.data())
-    //console.log(doc.id, " => ", doc.data());
+    console.log(doc.id, " => ", doc.data());
   })
 };

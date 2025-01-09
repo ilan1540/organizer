@@ -75,6 +75,10 @@ const [mass, setMass] = useState('>לא נבחר קובץ או סוג קלט')
     {
     value: 'rent',
     name: 'שכר דירה'
+    },
+    {
+    value: 'crediteCard',
+    name: 'כרטיסי אשראי'
   },
     
   ]

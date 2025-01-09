@@ -4,6 +4,7 @@ import { Navbar } from "./components/layout/Navbar";
 import { MyRoutes } from './components/config/MyRoutes'
 import { AuthContextProvider } from './components/config/AuthContext'
 import { DataContext } from './components/config/DataContext'
+//import { Gemel } from './components/gemel/Gemel';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     <div className='w-full h-full absolute bg-gradient-to-r from-blue-400 to-emerald-400 '>
         <BrowserRouter > 
             <Navbar />
-            <MyRoutes /> 
+            <MyRoutes />
+            
       </BrowserRouter>
         </div>
         </DataContext>

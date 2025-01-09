@@ -13,7 +13,7 @@ import range from "lodash/range";
 //]
      
 
-export const YaerSelect = () => {
+export const YearSelect = () => {
   const [startDate, setStartDate] = useState(new Date());
     const years = range(1990, getYear(new Date()) + 1, 1);
   
